@@ -34,6 +34,24 @@ app.get("/about", function(req, res){
 
 // Install "nodemon" that way you can keep making changes to your server without restarting it every time
 
+
+
+//BMI CALCULATOR
+app.get("/bmicalculator", function(req, res){
+    res.sendFile(__dirname + "/Bmi Calculator.html")
+});
+
+app.post("/bmicalculator", function(req, res){
+
+  var kg = parseFloat(req.body.kg);
+  var m2 = parseFloat(req.body.m2);
+  var ans =  kg / (m2 * m2);
+  var bMi = ans.toFixed(1)
+  res.send("Your BMI is " + bMi);
+
+ })
+ 
+
 app.listen(port, function(){
     console.log(`server started on port ${port}`)
 });
